@@ -1,3 +1,4 @@
+// informa para o typescript que o defineConfig vai ter estas propriedades (plugins, test, resolve, etc)
 /// <reference types="vitest/config" />
 
 import { defineConfig } from 'vite';
@@ -10,8 +11,9 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         setupFiles: ['./src/setupTests.ts'],
+        include: ['src/**/*.spec.tsx'],
     },
     resolve: {
-        alias: [{ find: '@', replacement: path.resolve(__dirname, "./src") }],
+        alias: [{ find: '@', replacement: path.resolve(__dirname, "./src") }], // define que o alias '@' se refere ao caminho absoluto da pasta src
     }
 })
