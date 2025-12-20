@@ -8,22 +8,24 @@ export function Login() {
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        navigate('/dashboard');
+        navigate('/signup');
     }
 
     return (
         <div>
-            <h1>Sign In</h1>
+            <h1>Fazer Login</h1>
 
             <form action="" onSubmit={handleSubmit} aria-label="login-form">
-                {/* foi necessário adicionar um label para cada input para que o teste funcionasse com a estrutura correta */}
-                <label htmlFor="email">E-mail</label>
+                {/* para o teste que fiz sozinho funcionar, são necessários labels para os inputs (verificar teste comentado no arquivo) */}
+                {/* <label htmlFor="email">E-mail</label> */}
                 <input type="text" placeholder="Insira seu e-mail" id="email" />
 
-                <label htmlFor="senha">Senha</label>
+                {/* <label htmlFor="senha">Senha</label> */}
+                {/* <input type="text" placeholder="Insira sua senha" id="senha" /> */}
                 <input type="text" placeholder="Insira sua senha" id="senha" />
 
-                <button>Entrar</button>
+                <button type="submit">Entrar</button>
+
             </form>
 
         </div>

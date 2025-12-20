@@ -13,25 +13,25 @@ describe('Testa o componente de Login', () => {
         },
     }));
 
-    test('page must have a title "Sign in"', async () => {
+    test('page must have a title "Fazer login"', async () => {
         render(<Login />);
 
         const title = await screen.findByRole('heading', {
-            name: 'Sign In'
+            name: /fazer login/i
         });
 
         expect(title).toBeInTheDocument();
     })
 
-    test('page must have two inputs', () => {
+    test('page must have two inputs', async () => {
         render(<Login />);
 
         // estrutura usada no curso (não funcionou por ter um input type text e um type password - role textbox só reconheceu type text):
-        // const inputs = await screen.findAllByRole('textbox');
-        // expect(inputs).toHaveLength(2);
+        const inputs = await screen.findAllByRole('textbox');
+        expect(inputs).toHaveLength(2);
 
-        expect(screen.getByLabelText(/e-mail/i)).toBeInTheDocument();
-        expect(screen.getByLabelText(/senha/i)).toBeInTheDocument();
+        // expect(screen.getByLabelText(/e-mail/i)).toBeInTheDocument();
+        // expect(screen.getByLabelText(/senha/i)).toBeInTheDocument();
 
     })
 
