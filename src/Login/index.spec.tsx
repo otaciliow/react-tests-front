@@ -1,9 +1,17 @@
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, within, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { Login } from ".";
 
+const navigateMock = vi.fn();
+
 describe('Testa o componente de Login', () => {
+
+    vi.mock('react-router-dom', () => ({
+        useNavigate(){
+            return navigateMock;
+        },
+    }));
 
     test('page must have a title "Sign in"', async () => {
         render(<Login />);
@@ -52,6 +60,15 @@ describe('Testa o componente de Login', () => {
         const inputEmail = await screen.findByPlaceholderText('Insira seu e-mail');
 
         expect(inputEmail).toBeInTheDocument();
+    })
+
+    test("form's submit must navigate to other page", async () => {
+        render(<Login />);
+
+        const button = await screen.findByRole('button');
+        fireEvent.click(button);
+
+        expect(navigateMock).toHaveBeenCalledTimes(1);
     })
 
 })

@@ -1,3 +1,5 @@
+### Testes utilizados em versão anterior do componente App.tsx
+
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
