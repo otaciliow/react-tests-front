@@ -1,11 +1,21 @@
+import type { FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './styles.css';
 
 export function Login() {
+    const navigate = useNavigate();
+
+    function handleSubmit(event: FormEvent) {
+        event.preventDefault();
+
+        navigate('/dashboard');
+    }
+
     return (
         <div>
             <h1>Sign In</h1>
 
-            <form action="" aria-label="login-form">
+            <form action="" onSubmit={handleSubmit} aria-label="login-form">
                 {/* foi necessário adicionar um label para cada input para que o teste funcionasse com a estrutura correta */}
                 <label htmlFor="email">E-mail</label>
                 <input type="text" placeholder="Insira seu e-mail" id="email" />
