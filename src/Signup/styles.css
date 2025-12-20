@@ -1,0 +1,23 @@
+h1 {
+    margin-bottom: 30px;
+}
+
+input {
+    height: 48px;
+    width: 80%;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+}
+
+button {
+    width: 160px;
+    height: 48px;
+}
