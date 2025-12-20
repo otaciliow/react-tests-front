@@ -27,13 +27,31 @@ describe('Testa o componente de Login', () => {
 
     })
 
-    test('page must have a button on the form', async () => {
+    test('page must have a button', async () => {
         render(<Login />);
 
-        const form = await screen.findByRole('form');
-        const button = await within(form).findByRole('button', {name: /entrar/i});
+        const button = await screen.findByRole('button');
 
         expect(button).toBeInTheDocument();
+    })
+
+    // versão que fiz sem acompanhar o curso, identificando uma necessidade de teste e implementando:
+    // test('page must have a button on the form', async () => {
+    //     render(<Login />);
+
+    //     const form = await screen.findByRole('form');
+    //     const button = await within(form).findByRole('button', {name: /entrar/i});
+
+    //     expect(button).toBeInTheDocument();
+    // })
+
+    // teste para exemplificar o uso do .findByPlaceholderText():
+    test('page must have an e-mail input', async () => {
+        render(<Login />);
+
+        const inputEmail = await screen.findByPlaceholderText('Insira seu e-mail');
+
+        expect(inputEmail).toBeInTheDocument();
     })
 
 })
