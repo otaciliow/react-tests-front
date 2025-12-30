@@ -2,6 +2,14 @@ h1 {
     margin-bottom: 30px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+}
+
 input {
     height: 48px;
     width: 100%;
@@ -9,15 +17,8 @@ input {
     margin-bottom: 16px;
 }
 
-.button-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    width: 100%;
-}
-
 button {
     width: 160px;
     height: 48px;
+    margin-bottom: 10px;
 }

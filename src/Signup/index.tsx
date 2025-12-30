@@ -1,5 +1,5 @@
 import type { FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import './styles.css';
 
@@ -20,6 +20,7 @@ export function SignUp() {
                 <input type="text" placeholder="Insira seu e-mail" />
                 <input type="text" placeholder="Insira sua senha" />
                 <button>Cadastrar</button>
+                <Link to={'/'}>Já tem cadastro? Clique aqui</Link>
             </form>
         </div>
     )

@@ -1,5 +1,5 @@
 import type { FormEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './styles.css';
 
 export function Login() {
@@ -8,7 +8,7 @@ export function Login() {
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
 
-        navigate('/signup');
+        navigate('/dashboard');
     }
 
     return (
@@ -25,6 +25,8 @@ export function Login() {
                 <input type="text" placeholder="Insira sua senha" id="senha" />
 
                 <button type="submit">Entrar</button>
+
+                <Link to={'/signup'}>Não tem cadastro? Clique aqui</Link>
 
             </form>
 
