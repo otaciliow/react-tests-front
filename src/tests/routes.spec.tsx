@@ -47,7 +47,7 @@ describe('Testa o componente MainRoutes', () => {
         expect(title).toBeInTheDocument();
     });
 
-    test('not found page must be rendered when route providade is invalid', async () => {
+    test('not found page must be rendered when route provided is invalid', async () => {
         render(
             <MemoryRouter initialEntries={["/not-found"]}>
                 <MainRoutes />
