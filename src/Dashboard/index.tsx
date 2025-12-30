@@ -30,7 +30,7 @@ export function Dashboard() {
             <h1>Dashboard</h1>
             <ul>
                 {pokemons.map((pokemon) => (
-                    <li>
+                    <li key={pokemon.id}>
                         <h2>{pokemon.name}</h2>
                         <img src={pokemon.image} alt={`imagem ${pokemon.name}`} />
                         <p>{`Tipo: ${pokemon.type}`}</p>
