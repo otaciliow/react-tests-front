@@ -47,4 +47,17 @@ describe('Testa o componente MainRoutes', () => {
         expect(title).toBeInTheDocument();
     });
 
+    test('not found page must be rendered when route providade is invalid', async () => {
+        render(
+            <MemoryRouter initialEntries={["/not-found"]}>
+                <MainRoutes />
+            </MemoryRouter>
+        );
+
+        const title = await screen.findByRole('heading', {
+            name: /404 - page not found/i
+        });
+
+        expect(title).toBeInTheDocument();
+    })
 })
