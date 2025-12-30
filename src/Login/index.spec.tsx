@@ -11,6 +11,7 @@ describe('Testa o componente de Login', () => {
         useNavigate(){
             return navigateMock;
         },
+        Link: vi.fn().mockImplementation((props) => props.children),
     }));
 
     test('page must have a title "Fazer login"', async () => {
@@ -21,7 +22,7 @@ describe('Testa o componente de Login', () => {
         });
 
         expect(title).toBeInTheDocument();
-    })
+    });
 
     test('page must have two inputs', async () => {
         render(<Login />);
@@ -33,7 +34,7 @@ describe('Testa o componente de Login', () => {
         // expect(screen.getByLabelText(/e-mail/i)).toBeInTheDocument();
         // expect(screen.getByLabelText(/senha/i)).toBeInTheDocument();
 
-    })
+    });
 
     test('page must have a button', async () => {
         render(<Login />);
@@ -41,7 +42,7 @@ describe('Testa o componente de Login', () => {
         const button = await screen.findByRole('button');
 
         expect(button).toBeInTheDocument();
-    })
+    });
 
     // versão que fiz sem acompanhar o curso, identificando uma necessidade de teste e implementando:
     // test('page must have a button on the form', async () => {
@@ -60,7 +61,7 @@ describe('Testa o componente de Login', () => {
         const inputEmail = await screen.findByPlaceholderText('Insira seu e-mail');
 
         expect(inputEmail).toBeInTheDocument();
-    })
+    });
 
     test("form's submit must navigate to other page", async () => {
         render(<Login />);
@@ -69,6 +70,14 @@ describe('Testa o componente de Login', () => {
         fireEvent.click(button);
 
         expect(navigateMock).toHaveBeenCalledTimes(1);
+    });
+
+    test('page must have a link to page signup', async () => {
+        render(<Login />);
+
+        const link = await screen.findByText('Não tem cadastro? Clique aqui');
+
+        expect(link).toBeInTheDocument();
     })
 
 })
