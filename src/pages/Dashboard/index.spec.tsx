@@ -1,10 +1,12 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import { Dashboard } from '.';
 
 import { fetchPokemonList } from '../../services/PokemonService';
 import { faker } from '@faker-js/faker';
+
+const navigateMock = vi.fn();
 
 const mockFetchPokemonListFn = vi.fn(fetchPokemonList).mockImplementation(async () => {
     return [
@@ -24,6 +26,12 @@ const mockFetchPokemonListFn = vi.fn(fetchPokemonList).mockImplementation(async 
 })
 
 describe('tests the Dashboard component', () => {
+
+    vi.mock('react-router-dom', () => ({
+        useNavigate(){
+            return navigateMock;
+        }
+    }));
 
     test('page must have a title "Dashboard"', async () => {
         render(<Dashboard fetchPokemonList={mockFetchPokemonListFn} />);
@@ -49,4 +57,13 @@ describe('tests the Dashboard component', () => {
 
         expect(target1).toBeInTheDocument();
     });
+
+    test('page must have items that navigate to details page when clicked', async () => {
+        render(<Dashboard fetchPokemonList={mockFetchPokemonListFn} />);
+
+        const pokemon = await screen.findAllByRole('listitem');
+        fireEvent.click(pokemon[0]);
+
+        expect(navigateMock).toHaveBeenCalledTimes(1);
+    })
 })
