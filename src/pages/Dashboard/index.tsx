@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { type PokemonType } from '../../types/PokemonType';
 
@@ -10,6 +10,7 @@ interface IProps {
 import './styles.css';
 
 export function Dashboard({ fetchPokemonList }: IProps) {
+    const navigate = useNavigate();
 
     const [pokemons, setPokemons] = useState<PokemonType[]>([]);
 
@@ -20,16 +21,18 @@ export function Dashboard({ fetchPokemonList }: IProps) {
         })()
     }, [])
 
+    function handleNavigateToPokemonDetail(id: number) {
+        navigate(`/pokemon-detail/${id}`);
+    }
+
     return (
         <div>
             <h1>Dashboard</h1>
             <ul>
                 {pokemons.map((pokemon) => (
-                    <li key={pokemon.id}>
+                    <li key={pokemon.id} onClick={() => handleNavigateToPokemonDetail(pokemon.id)}>
                         <h2>{pokemon.name}</h2>
-                        <Link to={`/pokemon-detail/${pokemon.id}`} >
-                            <img src={pokemon.image} alt={`imagem ${pokemon.name}`} />
-                        </Link>
+                        <img src={pokemon.image} alt={`imagem ${pokemon.name}`} />
                         <p>{`Tipo: ${pokemon.type}`}</p>
                     </li>
                 ) )}
