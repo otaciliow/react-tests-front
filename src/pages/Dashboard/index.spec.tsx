@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 
 import { Dashboard } from '.';
 
-import { fetchPokemonList } from '../services/PokemonService';
+import { fetchPokemonList } from '../../services/PokemonService';
 import { faker } from '@faker-js/faker';
 
 const mockFetchPokemonListFn = vi.fn(fetchPokemonList).mockImplementation(async () => {
@@ -40,5 +40,13 @@ describe('tests the Dashboard component', () => {
         const pokemons = await screen.findAllByRole('listitem');
 
         expect(pokemons).toHaveLength(2);
-    })
+    });
+
+    test('page must have a Pikachu on the pokemons list', async () => {
+        render(<Dashboard fetchPokemonList={mockFetchPokemonListFn} />);
+
+        const target1 = await screen.findByText('Pikachu');
+
+        expect(target1).toBeInTheDocument();
+    });
 })

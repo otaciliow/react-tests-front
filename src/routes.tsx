@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { Login } from './Login';
-import { Dashboard } from './Dashboard';
-import { SignUp } from './Signup';
+import { Login } from './pages/Login';
+import { Dashboard } from './pages/Dashboard';
+import { SignUp } from './pages/Signup';
 
 import { fetchPokemonList } from './services/PokemonService';
 

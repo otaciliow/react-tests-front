@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { type PokemonType } from '../types/PokemonType';
+import { type PokemonType } from '../../types/PokemonType';
 
 interface IProps {
     fetchPokemonList: () => Promise<PokemonType[]>;
