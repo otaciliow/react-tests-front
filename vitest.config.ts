@@ -11,7 +11,7 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         setupFiles: ['./src/setupTests.ts'],
-        include: ['src/**/*.spec.tsx'],
+        include: ['src/**/*.spec.tsx', 'src/**/*.spec.ts', 'src/**/*.test.ts'],
     },
     resolve: {
         alias: [{ find: '@', replacement: path.resolve(__dirname, "./src") }], // define que o alias '@' se refere ao caminho absoluto da pasta src
