@@ -1,28 +1,22 @@
 import { useState, useEffect } from 'react';
 
-import './styles.css';
+import { type PokemonType } from '../types/PokemonType';
 
-type PokemonType = {
-    id: number,
-    name: string,
-    image: string,
-    type: string,
+interface IProps {
+    fetchPokemonList: () => Promise<PokemonType[]>;
 }
 
-export function Dashboard() {
+import './styles.css';
+
+export function Dashboard({ fetchPokemonList }: IProps) {
 
     const [pokemons, setPokemons] = useState<PokemonType[]>([]);
 
     useEffect(() => {
-        async function loadData() {
-            const response = await fetch('http://localhost:3000/pokemon');
-
-            const data = await response.json();
-
+        (async () => {
+            const data = await fetchPokemonList();
             setPokemons(data);
-        }
-
-        loadData();
+        })()
     }, [])
 
     return (
