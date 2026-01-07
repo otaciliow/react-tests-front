@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 import { type PokemonType } from '../../types/PokemonType';
 
@@ -26,7 +27,9 @@ export function Dashboard({ fetchPokemonList }: IProps) {
                 {pokemons.map((pokemon) => (
                     <li key={pokemon.id}>
                         <h2>{pokemon.name}</h2>
-                        <img src={pokemon.image} alt={`imagem ${pokemon.name}`} />
+                        <Link to={`/pokemon-detail/${pokemon.id}`} >
+                            <img src={pokemon.image} alt={`imagem ${pokemon.name}`} />
+                        </Link>
                         <p>{`Tipo: ${pokemon.type}`}</p>
                     </li>
                 ) )}
