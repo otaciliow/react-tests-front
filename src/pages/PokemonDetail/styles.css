@@ -1,0 +1,15 @@
+.pokemon-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    border: 1px solid gray;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+.pokemon-wrapper img {
+    width: 400px;
+}
