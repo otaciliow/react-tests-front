@@ -2,7 +2,7 @@ import { type PokemonType } from "../types/PokemonType";
 import { fetchPokemonList, fetchPokemonDetail } from './PokemonService';
 import { faker } from '@faker-js/faker';
 
-global.fetch = vi.fn()
+globalThis.fetch = vi.fn()
 
 function createFetchResponse(data: any) {
     return { json: () => new Promise((resolve) => resolve(data)) }
